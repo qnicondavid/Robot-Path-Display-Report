@@ -21,13 +21,20 @@ To calculate the following:
 3. `omega` -rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
 
 Then, a scale variable is made to slow everything down so the robot doesn’t move across the screen too fast.
-Using these variables, the method then computes the robot's heading/rotation and position using trigonometry.
+
 ```cpp
 heading += omega * scale;
-
+```
+  
+Using these variables, the method converts the velocity variables `Vy` and `Vx` into our world's coordinate system using the current heading.
+This is done so the robot moves relative to where it's facing and not relative to the screen axes.
+```cpp
 			double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
 			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
+```
+Then the movement is added to the robot's current position.
 
+```cpp
 			posX += globalX * scale;
 			posY -= globalY * scale;
 ```
