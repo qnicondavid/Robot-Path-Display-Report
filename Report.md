@@ -25,7 +25,7 @@ private void stepRobot() {
 			path.add(new Point((int) posX, (int) posY));
 		}
 ```
-##Function Explanation
+## Function Explanation
 The movement and position of the robot is calculated within the `stepRobot()` method. It uses the four wheel inputs
   
 - `FL` - Front left wheel. 
