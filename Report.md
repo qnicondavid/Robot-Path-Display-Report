@@ -20,7 +20,7 @@ To calculate the following:
   
 3. `omega` -rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
 
-Then a scale variable is made to slow everything down so the robot doesn’t jump across the screen too fast.
+Then, a scale variable is made to slow everything down so the robot doesn’t move across the screen too fast.
 Using these variables, the method then computes the robot's heading/rotation and position using trigonometry.
 ```cpp
 heading += omega * scale;
