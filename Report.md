@@ -14,9 +14,11 @@ The movement and position of the robot is calculated within the `stepRobot()` me
      
 To calculate the following:
   
-- `Vx` - transitional velocity variable that gets assigned the value of `(-FL + FR + BL - BR) / 4.0`. 
-- `Vy` - transitional velocity variable that gets assigned the value of `(FL + FR + BL + BR) / 4.0`.
-- `omega` -rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
+1. `Vx` - (forward/backwards) velocity variable that gets assigned the value of `((-FL + FR + BL - BR) / 4.0)*-1.0`.
+    
+2. `Vy` - (sideways/strafe) velocity variable that gets assigned the value of `(FL + FR + BL + BR) / 4.0`.
+  
+3. `omega` -rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
 
 Using these variables, the method then figures out the heading and position of the robot using trigonometry.
 ```cpp
