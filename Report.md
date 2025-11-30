@@ -54,7 +54,7 @@ Using these variables, the method converts the velocity variables `Vy` and `Vx` 
 			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
 ```
 This formula is the 2D rotation matrix applied to a vector:
-\left[ \begin{matrix}\mathrm{globalX}\\ \mathrm{globalY}\end{matrix}\right] =\left[ \begin{matrix}\cos (\theta )&-\sin (\theta )\\ \sin (\theta )&\cos (\theta )\end{matrix}\right] \cdot \left[ \begin{matrix}Vx\\ Vy\end{matrix}\right] 
+
 - The matrix rotates the local velocity vector by the robot’s heading angle.
 - This ensures that “forward” (Vy) is always aligned with the robot’s current facing direction, not fixed to the screen axes
 
