@@ -10,7 +10,7 @@ The movement and position of the robot is calculated within the `stepRobot()` me
 - `FR` - Front right wheel.
 - `BL` - Back left wheel.
 - `BR` - Back right wheel.
-To calculate the following: 
+To calculate the following:   
 - `Vx` - transitional velocity variable that gets assigned the value of `(-FL + FR + BL - BR) / 4.0`. 
 - `Vy` - transitional velocity variable that gets assigned the value of `(FL + FR + BL + BR) / 4.0`.
 - `omega` -rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
