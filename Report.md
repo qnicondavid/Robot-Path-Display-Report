@@ -4,7 +4,28 @@
 The robot utilizes an Arduino-based Adafruit M0 microcontroller, alongside 4 mecanum wheels to move in every direction.
 ## Task Description
 The robot is programmed to record its movements using a pathing logic and display them on the GUI.
-## Movement Logic
+## Movement Logic Function
+```cpp
+private void stepRobot() {
+
+			double Vy = (FL + FR + BL + BR) / 4.0;
+			double Vx = (-FL + FR + BL - BR) / 4.0;
+			double omega = (-FL + FR - BL + BR) / 4.0;
+			Vx = Vx * -1.0;
+			double scale = 0.1;
+
+			heading += omega * scale;
+
+			double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
+			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
+
+			posX += globalX * scale;
+			posY -= globalY * scale;
+
+			path.add(new Point((int) posX, (int) posY));
+		}
+```
+##Function Explanation
 The movement and position of the robot is calculated within the `stepRobot()` method. It uses the four wheel inputs
   
 - `FL` - Front left wheel. 
@@ -26,12 +47,17 @@ Then, a scale variable is made to slow everything down so the robot doesn’t mo
 heading += omega * scale;
 ```
   
-Using these variables, the method converts the velocity variables `Vy` and `Vx` into our world's coordinate system using the current heading.
-This is done so the robot moves relative to where it's facing and not relative to the screen axes.
+Using these variables, the method converts the velocity variables `Vy` and `Vx` into our world's coordinate system using the current heading. 
+
 ```cpp
 			double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
 			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
 ```
+This formula is the 2D rotation matrix applied to a vector:
+\left[ \begin{matrix}\mathrm{globalX}\\ \mathrm{globalY}\end{matrix}\right] =\left[ \begin{matrix}\cos (\theta )&-\sin (\theta )\\ \sin (\theta )&\cos (\theta )\end{matrix}\right] \cdot \left[ \begin{matrix}Vx\\ Vy\end{matrix}\right] 
+- The matrix rotates the local velocity vector by the robot’s heading angle.
+- This ensures that “forward” (Vy) is always aligned with the robot’s current facing direction, not fixed to the screen axes
+
 Then the movement is added to the robot's current position.
 
 ```cpp
