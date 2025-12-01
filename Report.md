@@ -1,4 +1,4 @@
-# Robot Path Display Report
+# Robot Path Display Logic Report
 ---
 ## Robot Hardware
 The robot utilizes an Arduino-based Adafruit M0 microcontroller, alongside 4 mecanum wheels to move in every direction.
