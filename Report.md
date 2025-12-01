@@ -8,23 +8,18 @@ The robot is programmed to record its movements using a pathing logic and displa
 ## Movement Logic Function
 ```cpp
 private void stepRobot() {
-
-			double Vy = (FL + FR + BL + BR) / 4.0;
-			double Vx = (-FL + FR + BL - BR) / 4.0;
-			double omega = (-FL + FR - BL + BR) / 4.0;
-			Vx = Vx * -1.0;
-			double scale = 0.1;
-
-			heading += omega * scale;
-
-			double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
-			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
-
-			posX += globalX * scale;
-			posY -= globalY * scale;
-
-			path.add(new Point((int) posX, (int) posY));
-		}
+	double Vy = (FL + FR + BL + BR) / 4.0;
+	double Vx = (-FL + FR + BL - BR) / 4.0;
+	double omega = (-FL + FR - BL + BR) / 4.0;
+	Vx = Vx * -1.0;
+	double scale = 0.1;
+	heading += omega * scale;
+	double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
+	double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
+	posX += globalX * scale;
+	posY -= globalY * scale;
+	path.add(new Point((int) posX, (int) posY));
+}
 ```
 ## Function Explanation
 The movement and position of the robot is calculated within the `stepRobot()` method. It uses the four-wheel inputs.
@@ -66,8 +61,8 @@ heading += omega * scale;
 Using these variables, the method converts the velocity variables `Vy` and `Vx` into our world's coordinate system using the current heading. 
 
 ```cpp
-			double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
-			double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
+double globalX = Vx * Math.cos(heading) - Vy * Math.sin(heading);
+double globalY = Vx * Math.sin(heading) + Vy * Math.cos(heading);
 ```
 This formula is the 2D rotation matrix applied to a vector:
 
@@ -77,7 +72,7 @@ This formula is the 2D rotation matrix applied to a vector:
 Then the movement is added to the robot's current position.
 
 ```cpp
-			posX += globalX * scale;
-			posY -= globalY * scale;
+posX += globalX * scale;
+posY -= globalY * scale;
 ```
 At the end, it stores both `posX` and `posY` in a constant List variable `path`. 
