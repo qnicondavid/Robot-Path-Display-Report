@@ -35,24 +35,24 @@ The movement and position of the robot is calculated within the `stepRobot()` me
 - `BR` - Back right wheel.
 
 To calculate the following:
-
-1. `Vy` - (forward/backwards) velocity variable that gets assigned the value of `(FL + FR + BL + BR) / 4.0`.
-		- The wheels all spin in the same direction when wanting to move forward or backward.
-        - We only need to add the speed and divide by 4 to get the average velocity.
+ 
+1. `Vy` - (forward/backwards) velocity variable that gets assigned the value of `(FL + FR + BL + BR) / 4.0`.  
+		- The wheels all spin in the same direction when wanting to move forward or backward.  
+        - We only need to add the speed and divide by 4 to get the average velocity.  
    		
-
+ 
 3. `Vx` - (sideways/strafe) velocity variable that gets assigned the value of `((-FL + FR + BL - BR) / 4.0)*-1.0`.
-   		- Due to the unique design of the mecanum wheels, the robot can move from side to side.	 
-        - 2 opposite corner wheels push backwards while the other 2 opposite corner wheels push forwards, allowing the robot to strafe. 	
-		- We multiply Vx by -1.0 to match the coordinate convention.
-		- We divide by 4 to get the average velocity again.
+   		- Due to the unique design of the mecanum wheels, the robot can move from side to side.	   
+        - 2 opposite corner wheels push backwards while the other 2 opposite corner wheels push forwards, allowing the robot to strafe.   	
+		- We multiply Vx by -1.0 to match the coordinate convention.  
+		- We divide by 4 to get the average velocity again.  
 	
-4. `omega` - rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.
-		   - The rotation comes from the difference between the left wheels and the right wheels.
-   		   - When the left wheels and the right wheels spin in different directions, the robot rotates.
-           - Divide by 4 to get the average velocity.		
-
-
+4. `omega` - rotational velocity variable that gets assigned the value of `(-FL + FR - BL + BR) / 4.0`.  
+		   - The rotation comes from the difference between the left wheels and the right wheels.  
+   		   - When the left wheels and the right wheels spin in different directions, the robot rotates.  
+           - Divide by 4 to get the average velocity.		 
+ 
+ 
 			
 Then, a scale variable is made to slow everything down so the robot doesn’t move across the screen too fast.
 
