@@ -41,7 +41,7 @@ To calculate the following:
         - We only need to add the speed and divide by 4 to get the average velocity.  
    		
  
-3. `Vx` - (sideways/strafe) velocity variable that gets assigned the value of `((-FL + FR + BL - BR) / 4.0)*-1.0`.
+3. `Vx` - (sideways/strafe) velocity variable that gets assigned the value of `((-FL + FR + BL - BR) / 4.0)*-1.0`.  
    		- Due to the unique design of the mecanum wheels, the robot can move from side to side.	   
         - 2 opposite corner wheels push backwards while the other 2 opposite corner wheels push forwards, allowing the robot to strafe.   	
 		- We multiply Vx by -1.0 to match the coordinate convention.  
