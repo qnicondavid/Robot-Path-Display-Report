@@ -21,7 +21,7 @@ private void stepRobot() {
 	path.add(new Point((int) posX, (int) posY));
 }
 ```
-## Function Explanation
+## Function Explanation [1]
 The movement and position of the robot is calculated within the `stepRobot()` method. It uses the four-wheel inputs.
   
 - `FL` - Front left wheel. 
@@ -76,3 +76,5 @@ posX += globalX * scale;
 posY -= globalY * scale;
 ```
 At the end, it stores both `posX` and `posY` in a constant List variable `path`. 
+## References
+[1] Gfrerrer, A. (2008). *Geometry and Kinematics of the Mecanum Wheel*. Graz University of Technology.
